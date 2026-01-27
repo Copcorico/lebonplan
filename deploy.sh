@@ -5,7 +5,9 @@
 #
 
 # Set the repository path
-REPO_PATH="/home/runner/work/lebonplan/lebonplan"
+# This should be set to your actual repository path on the server
+# Example: REPO_PATH="/var/www/lebonplan"
+REPO_PATH="${REPO_PATH:-$(dirname "$(readlink -f "$0")")}"
 LOG_FILE="$REPO_PATH/deployment.log"
 
 # Function to log messages

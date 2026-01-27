@@ -5,7 +5,13 @@
  */
 
 // Configuration
-define('SECRET_TOKEN', getenv('WEBHOOK_SECRET') ?: 'your-secret-token-here');
+$secretToken = getenv('WEBHOOK_SECRET');
+if (empty($secretToken)) {
+    http_response_code(500);
+    error_log('WEBHOOK ERROR: WEBHOOK_SECRET environment variable is not set');
+    die('Configuration error: Secret token not configured');
+}
+define('SECRET_TOKEN', $secretToken);
 define('REPO_PATH', __DIR__);
 define('LOG_FILE', __DIR__ . '/webhook.log');
 
@@ -13,7 +19,10 @@ define('LOG_FILE', __DIR__ . '/webhook.log');
 function logMessage($message) {
     $timestamp = date('Y-m-d H:i:s');
     $logEntry = "[$timestamp] $message\n";
-    file_put_contents(LOG_FILE, $logEntry, FILE_APPEND);
+    $result = @file_put_contents(LOG_FILE, $logEntry, FILE_APPEND | LOCK_EX);
+    if ($result === false) {
+        error_log("Failed to write to webhook log: $message");
+    }
 }
 
 // Function to execute shell commands safely
@@ -83,9 +92,21 @@ if ($fetchResult['code'] !== 0) {
     exit;
 }
 
+// Get current branch safely
+$branchResult = executeCommand('git rev-parse --abbrev-ref HEAD');
+$currentBranch = trim($branchResult['output']);
+
+// Validate branch name (alphanumeric, hyphens, underscores, forward slashes only)
+if (!preg_match('/^[a-zA-Z0-9\/_-]+$/', $currentBranch)) {
+    http_response_code(500);
+    logMessage('ERROR: Invalid branch name detected: ' . $currentBranch);
+    echo json_encode(['status' => 'error', 'message' => 'Invalid branch name']);
+    exit;
+}
+
 // Execute git pull
-logMessage('INFO: Starting git pull...');
-$pullResult = executeCommand('git pull origin $(git rev-parse --abbrev-ref HEAD) 2>&1');
+logMessage('INFO: Starting git pull for branch: ' . $currentBranch . '...');
+$pullResult = executeCommand('git pull origin ' . escapeshellarg($currentBranch) . ' 2>&1');
 logMessage('PULL OUTPUT: ' . $pullResult['output']);
 
 if ($pullResult['code'] !== 0) {

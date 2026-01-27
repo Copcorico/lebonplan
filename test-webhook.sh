@@ -5,7 +5,9 @@
 #
 
 WEBHOOK_URL="http://localhost/webhook.php"
-SECRET_TOKEN="your-secret-token-here"
+# IMPORTANT: Change this to match your actual secret token configured on the server
+# Generate a secure token with: openssl rand -hex 32
+SECRET_TOKEN="$(openssl rand -hex 32 2>/dev/null || echo 'test-token-for-local-testing-only')"
 
 # Sample GitHub push event payload
 PAYLOAD='{
