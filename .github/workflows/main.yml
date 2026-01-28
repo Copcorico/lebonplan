@@ -20,9 +20,9 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh -o StrictHostKeyChecking=no mc@82.66.66.102 << 'EOF'
-            cd /var/www/lebonplan/
+            cd ~Documents/lebonplan/
             git pull origin main
-            cd dev-web
-            composer install --no-dev --optimize-autoloader
-            sudo php bin/console cache:clear --env=prod
+            #cd dev-web
+            #composer install --no-dev --optimize-autoloader
+            #sudo php bin/console cache:clear --env=prod
           EOF
