@@ -7,69 +7,49 @@
     <link rel="icon" type="image/png" href="images/personnagesansfondombre.png">
 	</head> 
 	<body>
-		<header>
-        <section class="tete"></section>
-            <details>
-                <summary>☰</summary>
-                <ul class="menu">
-                    <li><a href="index.html"><span class="active">Acceuil</span></a></li>
-                    <li><a href="Apropos.html">A propos</a></li> 
-                    <li><a href="inscription.html">Inscription</a></li>
-                    <li><a href="connexion.html">Connexion</a></li>
-                    <li><a href="avis.html">Avis</a></li>
-                    <li><a href="contact.html">Contact</a></li> 
-                    <li><a href="annonce.html">Postez votre annonce</a></li>
-                </ul>
-            </details>
-            <!--alt est ce qui va s'afficher si l'image ne charge pas-->
-            <div class="title-header">
-                <h1 class ="title">LifePath</h1>
-                <img src="images/personnageombre.png" alt="Logo LifePath" class="logo-header">
-            </div>
-        </section>
-        <label for="search" ><input type="search" class="search" id="search" size="30" placeholder="🔎 Stage info saint rennes..."></label>
+		<header class="Connect_subscribe">
+			<img src="images/Logo_bg_arrondi.png" alt="Logo LifePath">
+			<h1 class="center"><b>LifePath</b></h1>
     	</header>
  
 		<main>
- 
 			<section>
 	   
-				<h1 class="center">Créez un compte</h1>
-				
-				<p  class="center">Pour déposer une annonce ou bénéficier d'une expérience personnalisée avec du contenu en lien avec vos recherches inscrivez-vous, c'est rapide et gratuit !</p>
-				
+				<h1 class="center">Inscription</h1>
 				<article>
 					
-					
 					<form class="formulaire">
-						<h2>Formulaire d'inscription</h2>
-
-						<label>Civilité
-						<select name="title">
-							<option value="ms">Madame</option>
-							<option value="mr">Monsieur</option>	 
-							<option value="he">Helicoptère de combat apache Antonov-1789</option>
-							<option value="  ">Non binaire</option> 
-						</select>
-						</label>
-						<label>Nom<input name="lastname" type="text" value="" size="50" required ></label>
-						<label>Prénom<input name="surname" type="text" size="50" value="" required ></label>
-						<label>Courriel<input name="email" type="email" size="30" value="" required ></label>
-						<label>Mot de passe<input name="password" type="password" size="30" value="" required ></label>
-						<label>Confirmation<input name="password_confirm" type="password" size="30" minlength="8" value="" required ></label>
-						<div class="buttons">
-							<button type="submit">ENVOYER</button>
-							<input type="reset" value="Réinitialiser" >
+						<div class="container_btn">
+							<button class="default_btn">Particulier</button>
+							<button class="btn">Entreprise</button>
 						</div>
+						<br>
+
+						<label>Nom*</label><br>
+						<input name="nom" type="text" required>exp: Dupont</input>
+						<br><br>
+
+						<label>Prénom*</label><br>
+						<input name="prenom" type="text" required>
+						<br><br>
+
+						<label>Email*</label><br>
+						<input name="email" type="email" required>
+						<br><br>
+
+						<label>Mot de passe*</label><br>
+						<input name="password" type="password" required>
+						<br><br>
+
+						<label>Confirmation*</label><br>
+						<input name="password_confirmation" type="password" required>
+						<br><br>
 					</form>
 			
 				</article>
 			</section>
 	   
 		</main>
-	 
-		<footer class="footer">
-		<em>2026 - Tous droits réservés</em> | <a href="mentions-legales.html">Mentions légales</a>
 	 
 	</body> 
 </html> 
