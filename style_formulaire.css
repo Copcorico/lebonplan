@@ -41,7 +41,15 @@ button {
     margin-left: 0;
     font-size: 100%;
     cursor: pointer;
+}
 
+select {
+    font-size: 75%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: black solid 1%;
+    background-color: #f0f0f1;
 }
 
 a {
@@ -64,7 +72,7 @@ input {
     border-bottom: black solid 1%;
     background-color: #f0f0f1;
     font-style: italic;
-    font-size: 100%
+    font-size: 100%;
 
 }
 
@@ -77,10 +85,11 @@ label {
     font-weight: bold;
 }
 
-.checkbox {
+.btn_color {
     width: 30px;
     height: 30px;
     accent-color: #f0e278;
+    border: transparent;
 }
 
 p {
