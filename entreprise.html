@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Entreprise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entreprise - LifePath</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/personnagesansfondombre.png">
 </head>
@@ -11,28 +12,128 @@
 <body>
     <header>
         <section class="tete-navbar"></section>
-            <details>
-                <summary class="tete-navbar">☰</summary>
-                <ul class="menu">
-                    <li><a href="index.html"><span class="active">Acceuil</span></a></li>
-                    <li><a href="Apropos.html">A propos</a></li> 
-                    <li><a href="inscription_particulier.html">Inscrption</a>
-                    <li><a href="connexion.html">Connexion</a></li>
-                    <li><a href="avis.html">Avis</a></li>
-                    <li><a href="contact.html">Contact</a></li> 
-                    <li><a href="annonce.html">Postez votre annonce</a></li>
-                </ul>
-            </details>
-            <!--alt est ce qui va s'afficher si l'image ne charge pas-->
-            <div class="logo-navbar">
-                <img src="images/personnageombre.png" alt="Logo LifePath" class="logo-header">
-            </div>
-        </section>
+        <details>
+            <summary class="tete-navbar">☰</summary>
+            <ul class="menu">
+                <li><a href="index.html"><span class="active">Accueil</span></a></li>
+                <li><a href="Apropos.html">À propos</a></li>
+                <li><a href="inscription_particulier.html">Inscription</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="avis.html">Avis</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="annonce.html">Postez votre annonce</a></li>
+            </ul>
+        </details>
+        <div class="logo-navbar">
+            <img src="images/personnageombre.png" alt="Logo LifePath" class="logo-header">
+        </div>
     </header>
 
-	<footer>
-    <p>&copy; 2026 Tous droits réservés</p>
-    <a href="legale.html" > Mentions légales et politique de confidentialité</a>
-	</footer>
+    <section class="entreprise-banner">
+        <div class="coeur-card"></div>
+        <img src="images/entreprise.jpg" alt="Image de l'entreprise" class="entreprise-img">
+    </section>
+
+    <main>
+        <article class="entreprise-container">
+            <header class="entreprise-header">
+                <h1>Nom de l'entreprise</h1>
+                <div class="star-rating">
+                    ⭐⭐⭐⭐☆ <span>(4,2)</span>
+                </div>
+            </header>
+            <p class="entreprise-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione maxime
+                reprehenderit deleniti, expedita suscipit cupiditate?
+            </p>
+            <ul class="entreprise-info">
+                <li>Domaine : Informatique</li>
+                <li>Localisation : Saint-Nazaire</li>
+                <li>Taille : 50-100 salariés</li>
+            </ul>
+
+            <section class="offres-carousel">
+                <h2>Offres</h2>
+                <div class="carousel">
+                    <button class="prev">&lt;</button>
+                    <div class="carousel-track">
+                        <!-- exemple d'offre unique au centre -->
+                        <div class="offre-item">
+                            <div class="offre-card">
+                                <img src="images/entreprise.jpg" alt="Titre de l'offre" class="offre-card-img">
+                                <div class="offre-card-info">
+                                    <h3 class="offre-card-title">Titre de l'offre de stage</h3>
+                                    <div class="offre-card-meta">3.5 ★ • St Nazaire • Bac +5</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- autres éléments peuvent être ajoutés et seront masqués par le carousel -->
+                        <div class="offre-item">
+                            <div class="offre-card">
+                                <img src="images/entreprise.jpg" alt="Titre de l'offre" class="offre-card-img">
+                                <div class="offre-card-info">
+                                    <h3 class="offre-card-title">Titre de l'offre de stage</h3>
+                                    <div class="offre-card-meta">4.0 ★ • St Nazaire • Bac +3</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="offre-item">
+                            <div class="offre-card">
+                                <img src="images/entreprise.jpg" alt="Titre de l'offre" class="offre-card-img">
+                                <div class="offre-card-info">
+                                    <h3 class="offre-card-title">Titre de l'offre de stage</h3>
+                                    <div class="offre-card-meta">3.8 ★ • St Nazaire • Bac +2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="next">&gt;</button>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tous droits réservés</p>
+        <a href="legale.html">Mentions légales et politique de confidentialité</a>
+    </footer>
+
+    <script>
+        // simple carousel logic
+        const track = document.querySelector('.carousel-track');
+        const items = Array.from(track.children);
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const dots = document.querySelectorAll('.dot');
+
+        let currentIndex = 0;
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            dots.forEach((d,i) => d.classList.toggle('active', i === currentIndex));
+        }
+        // ensure both buttons get listeners and clickable z-index
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        });
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        });
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                currentIndex = idx;
+                updateCarousel();
+            });
+        });
+        // initialize
+        updateCarousel();
+    </script>
 </body>
 </html>
