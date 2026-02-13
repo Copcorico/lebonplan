@@ -124,10 +124,156 @@ footer {
     background-color: #d02c3f;
 }
 
-
 .offre-img {
     width: 95%;
     height: auto;
     border-radius: 12px;
     justify-content: center;
 }
+
+.offres-carousel {
+    margin: 2% 4%;
+}
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+.carousel-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+.offre-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
+}
+.offre-card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: #94d4eb;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+.offre-card-img {
+    width: 100%;
+    display: block;
+    border-bottom: 2px solid #142b53;
+}
+.offre-card-info {
+    padding: 10px 12px;
+    text-align: center;
+}
+.offre-card-title {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #142b53;
+}
+.offre-card-meta {
+    font-size: 0.9em;
+    margin-top: 4px;
+    color: #142b53;
+}
+.entreprise-banner .coeur-card {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    background-color: #f0f0f1;
+    border: 2px solid #142b53;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+.entreprise-banner .coeur-card:focus,
+.entreprise-banner .coeur-card:hover {
+    background-color: #d02c3f;
+}
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.7em;
+    cursor: pointer;
+    color: #142b53;
+    z-index: 10;
+    padding: 0 8px;
+}
+.prev {
+    left: 5px;
+}
+.next {
+    right: 5px;
+}
+.carousel-dots {
+    text-align: center;
+    margin-top: 10px;
+}
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 0 4px;
+}
+.dot.active {
+    background: #142b53;
+}
+.entreprise-banner {
+    position: relative;
+}
+.entreprise-banner .entreprise-img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
+    display: block;
+}
+.entreprise-header {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: -20px;
+    background: transparent;
+}
+.entreprise-header h1,
+.entreprise-header .star-rating {
+    color: #142b53;
+    margin: 0;
+}
+.entreprise-header .star-rating {
+    font-size: 1em;
+    margin-top: 4px;
+}
+
+/* responsive adjustments */
+@media (max-width: 600px) {
+    header .logo-header { width: 25%; }
+    .search { font-size: 1em; }
+    .offre-card { max-width: 90%; padding: 8px; }
+    .offre-card-title { font-size: 1.1em; }
+    .offre-card-meta { font-size: 0.8em; }
+    .prev, .next { font-size: 1.5em; }
+    .carousel-dots { margin-top: 6px; }
+    .dot { width: 8px; height: 8px; }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .offre-card { max-width: 300px; }
+}
+
+@media (min-width: 901px) {
+    .offre-card { max-width: 400px; }
+}
+
+
