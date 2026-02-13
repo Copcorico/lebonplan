@@ -51,13 +51,25 @@ header {
     flex-direction: row;
     text-align: center;
     justify-content: center;
-    
+}
+
+.tete-navbar {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: left;
 }
 
 .title-header {
     display: flex;
     flex-direction: row;
     text-align: center;
+    justify-content: center;
+}
+
+.logo-navbar {
+    flex-direction: row;
+    text-align: right;
     justify-content: center;
 }
 
